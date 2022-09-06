@@ -2,6 +2,7 @@
 
 #include "admin.hpp"
 
+
 //Bank Management System
 #define LOG(x) std::cout << x << std::endl;
 
@@ -18,12 +19,13 @@ void signUp(){
 
 int main(void){
     int input{0};
+    admin adm;
 
     LOG("Welcome to the Bank Management System")
     LOG("Choose one the following to began")
-    LOG("1: Login")
-    LOG("2: Admin")
-    LOG("3: Signup")
+    LOG("1 - Login")
+    LOG("2 - Admin")
+    LOG("3 - Signup")
 
     std::cin >> input;
     
@@ -32,7 +34,7 @@ int main(void){
             login();
             break;
         case 2:
-            admin();
+            adm.adminInfo();
             break;
         case 3:
             signUp();
