@@ -12,20 +12,21 @@ void login(){
 
 }
 
-void signUp(){
-
+void create_Account(){
+    LOG("Account Created")
 }
 
 
 int main(void){
-    int input{0};
+    int input;
     admin adm;
-
-    LOG("Welcome to the Bank Management System")
-    LOG("Choose one the following to began")
-    LOG("1 - Login")
-    LOG("2 - Admin")
-    LOG("3 - Signup")
+    LOG("|----------------------------------------|")
+    LOG("| Welcome to the Bank Management System  |")
+    LOG("| Choose one the following to began      |")
+    LOG("| 1 - Login                              |")
+    LOG("| 2 - Admin                              |")
+    LOG("| 3 - Signup                             |")
+    LOG("|----------------------------------------|\n")
 
     std::cin >> input;
     
@@ -37,7 +38,7 @@ int main(void){
             adm.adminInfo();
             break;
         case 3:
-            signUp();
+            create_Account();
             break;
         default:
             break;

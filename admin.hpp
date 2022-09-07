@@ -17,8 +17,8 @@ class admin{
         void adminInfo();
         void menu();
 
-        private:
-            std::string username = "admin";
-            std::string password = "admin";
+    private:
+        std::string username = "admin";
+        std::string password = "admin";
 
 };

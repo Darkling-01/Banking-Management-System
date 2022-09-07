@@ -9,16 +9,20 @@ void add_Bank_Teller();
 void create_User_Account();
 void delete_User_Account();
 void check_List_Of_User();
+void check_List_of_Tellers();
+void update_Teller_List();
+void update_User_List();
 void menu();
+void textFile();
 
 
 // double colon is used to define a function outside a class... admin.hpp
 
 void admin::adminInfo(){
     admin adm;
+    int num;
 
-    std::string user;
-    std::string pass;
+    std::string user, pass;
     
     std::cout << "Admin: ";
     std::cin >> user;
@@ -27,7 +31,6 @@ void admin::adminInfo(){
     std::cin >> pass;
     
     if(adm.check_Pass(pass) == true && adm.check_User(user) == true){
-        int num;
 
         LOG("Access Granted...\n\n")
 
@@ -38,8 +41,11 @@ void admin::adminInfo(){
         LOG("| 3 - Create User account   |")
         LOG("| 4 - Delete User Account   |")
         LOG("| 5 - Check List of Users   |")
-        LOG("| 6 - Return To Menu        |")                   //doesn't work
-        LOG("| 7 - Exit                  |")
+        LOG("| 6 - Check List of Tellers |")
+        LOG("| 7 - Update Teller List    |")
+        LOG("| 8 - Update User List      |")
+        LOG("| 9 - Return To Menu        |")                   //doesn't work
+        LOG("|10 - Exit                  |")
         LOG("|---------------------------|\n")
 
         std::cin >> num;
@@ -62,9 +68,18 @@ void admin::adminInfo(){
                 check_List_Of_User();
                 break;
             case 6:
-                menu();
+                check_List_of_Tellers();
                 break;
             case 7:
+                update_Teller_List();
+                break;
+            case 8:
+                update_User_List();
+                break;
+            case 9:
+                menu();
+                break;
+            case 10:
                 EXIT_SUCCESS;
                 break;
 
@@ -92,7 +107,6 @@ void delete_User_Account(){
 }
 
 void check_List_Of_User(){
-    int num;
     admin adm;
 
     LOG("  LIST OF GROUPS:  ")
@@ -100,6 +114,8 @@ void check_List_Of_User(){
     LOG("| 1 - Bank Tellers |")
     LOG("| 2 - Users        |")
     LOG("| 3 - Back         |")
+    LOG("|------------------|")
+    int num;
 
     std::cin >> num;
 
@@ -117,6 +133,34 @@ void check_List_Of_User(){
             break;
     };
 }
+
+void check_List_of_Tellers(){
+
+}
+
+void update_Teller_List(){
+    std::string fullName, iD, address, status, response;
+    LOG("WHAT DO YOU WANT TO CHANGE:\n Fullname, ID, Address, Status")
+    std::cin >> response;
+
+
+
+}
+
+void update_User_List(){
+
+}
+
+
 void admin::menu(){
     //need help to return to main menu in main.cpp
+}
+
+void textFile(){
+    //Create an instance of ofstream and create and opens a new text file called Bank Tellers.
+    std::ofstream teller_file("Bank Tellers.txt", std::ios::in | std::ios::out);
+
+    //NOTE: check if the file is already created, if doesn't exist then create one...
+    //NOTE: must to able to modify the file without deleteing the information it already has...
+    
 }
