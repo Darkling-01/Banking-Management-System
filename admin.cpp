@@ -31,16 +31,16 @@ void admin::adminInfo(){
 
         LOG("Access Granted...\n\n")
 
-        LOG("CHOOSE ONE OF THE FOLLOWING")
-        LOG("---------------------------")
-        LOG("1 - Add New Admin")
-        LOG("2 - Add Bank Teller")
-        LOG("3 - Create a new User account")
-        LOG("4 - Delete User Account")
-        LOG("5 - Check List of Users")
-        LOG("6 - Return To Menu")                   //doesn't work
-        LOG("7 - Exit")
-        LOG("---------------------------")
+        LOG(" CHOOSE ONE OF THE FOLLOWING")
+        LOG("|---------------------------|")
+        LOG("| 1 - Add New Admin         |")
+        LOG("| 2 - Add Bank Teller       |")
+        LOG("| 3 - Create User account   |")
+        LOG("| 4 - Delete User Account   |")
+        LOG("| 5 - Check List of Users   |")
+        LOG("| 6 - Return To Menu        |")                   //doesn't work
+        LOG("| 7 - Exit                  |")
+        LOG("|---------------------------|\n")
 
         std::cin >> num;
 
@@ -92,8 +92,31 @@ void delete_User_Account(){
 }
 
 void check_List_Of_User(){
+    int num;
+    admin adm;
 
+    LOG("  LIST OF GROUPS:  ")
+    LOG("|------------------|")
+    LOG("| 1 - Bank Tellers |")
+    LOG("| 2 - Users        |")
+    LOG("| 3 - Back         |")
+
+    std::cin >> num;
+
+    switch(num){
+        case 1:
+            //open text file showing bank teller info
+            break;
+        case 2:
+            //open text file showing users info
+            break;
+        case 3:
+            adm.adminInfo();
+            break;
+        default:
+            break;
+    };
 }
 void admin::menu(){
-    //need help to return to main.cpp
+    //need help to return to main menu in main.cpp
 }
