@@ -140,9 +140,34 @@ void check_List_of_Tellers(){
 
 void update_Teller_List(){
     std::string fullName, iD, address, status, response;
-    LOG("WHAT DO YOU WANT TO CHANGE:\n Fullname, ID, Address, Status")
+    
+    LOG("ENTER EMPLOYEES ID: ")
+    std::cin >> iD;
+    
+    if(iD == iD){
+        LOG("WHAT DO YOU WANT TO CHANGE:\n Fullname, ID, Address, Status")
     std::cin >> response;
 
+    if(response == fullName){
+
+    }
+    else if (response == iD)
+    {
+        /* code */
+    }
+    else if (response == address)
+    {
+        /* code */
+    }
+    else if (response == status)
+    {
+        /* code */
+    }
+    else{
+        LOG("Incorrect Input")
+    }
+
+    }
 
 
 }
@@ -159,6 +184,10 @@ void admin::menu(){
 void textFile(){
     //Create an instance of ofstream and create and opens a new text file called Bank Tellers.
     std::ofstream teller_file("Bank Tellers.txt", std::ios::in | std::ios::out);
+
+    if(){
+
+    }
 
     //NOTE: check if the file is already created, if doesn't exist then create one...
     //NOTE: must to able to modify the file without deleteing the information it already has...
