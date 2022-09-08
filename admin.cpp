@@ -15,11 +15,14 @@ void update_User_List();
 void menu();
 void textFile();
 
+//global variables
+std::string fullName, address, status, response, currentEmployee, iD;
+
+admin adm;
 
 // double colon is used to define a function outside a class... admin.hpp
 
 void admin::adminInfo(){
-    admin adm;
     int num;
 
     std::string user, pass;
@@ -95,7 +98,7 @@ void add_Admin(){
 }
 
 void add_Bank_Teller(){
-
+    
 }
 
 void create_User_Account(){
@@ -107,7 +110,6 @@ void delete_User_Account(){
 }
 
 void check_List_Of_User(){
-    admin adm;
 
     LOG("  LIST OF GROUPS:  ")
     LOG("|------------------|")
@@ -139,34 +141,36 @@ void check_List_of_Tellers(){
 }
 
 void update_Teller_List(){
-    std::string fullName, iD, address, status, response;
-    
+
     LOG("ENTER EMPLOYEES ID: ")
     std::cin >> iD;
-    
-    if(iD == iD){
-        LOG("WHAT DO YOU WANT TO CHANGE:\n Fullname, ID, Address, Status")
-    std::cin >> response;
 
-    if(response == fullName){
+    if(currentEmployee == iD){
+        LOG("WHAT DO YOU WANT TO CHANGE:\tFullname, ID, Address, Status")
+        std::cin >> response;
 
-    }
-    else if (response == iD)
-    {
-        /* code */
-    }
-    else if (response == address)
-    {
-        /* code */
-    }
-    else if (response == status)
-    {
-        /* code */
+        if(response == "Fullname"){
+             /* code */
+        }
+        else if (response == "ID")
+        {
+            /* code */
+        }
+        else if (response == "Address")
+        {
+            /* code */
+        }
+        else if (response == "Status")
+        {
+            /* code */
+        }
+        else{
+         LOG("Incorrect Input")
+        }
+
     }
     else{
-        LOG("Incorrect Input")
-    }
-
+        LOG("EMPLOYEE NOT FOUND.")
     }
 
 
@@ -185,9 +189,6 @@ void textFile(){
     //Create an instance of ofstream and create and opens a new text file called Bank Tellers.
     std::ofstream teller_file("Bank Tellers.txt", std::ios::in | std::ios::out);
 
-    if(){
-
-    }
 
     //NOTE: check if the file is already created, if doesn't exist then create one...
     //NOTE: must to able to modify the file without deleteing the information it already has...
