@@ -1,5 +1,5 @@
 #include <fstream>
-
+#include <istream>
 #include "admin.hpp"
 
 #define LOG(x) std::cout << x << std::endl;
@@ -98,11 +98,55 @@ void add_Admin(){
 }
 
 void add_Bank_Teller(){
+    char choice;
+    do{
+        LOG(" NEW TELLER INFORMATION")
+        LOG("|----------------------|")
+        LOG("Fullname (first and last)")
+        std::getline(std::cin >> std::ws, fullName);            //std::ws is used to to ignore all whitespaces in the string sequence
+
+        LOG("Address")
+        std::getline(std::cin >> std::ws, address);
+
+        LOG("ID")
+        std::getline(std::cin >> std::ws, iD);
+
+        LOG("Teller Status")
+        std::getline(std::cin >> std::ws, status);
+
+        std::cout << "Fullname: " << fullName << std::endl;
+
+        LOG("ADD ANOTHER TELLER? (y/n)")
+        std::cin >> choice;
+    }while(choice == 'y' || choice == 'Y');
     
+    adm.adminInfo();
 }
 
 void create_User_Account(){
+char choice;
+    do{
+        LOG(" Create USER INFORMATION")
+        LOG("|----------------------|")
+        LOG("Fullname (first and last)")
+        std::getline(std::cin >> std::ws, fullName);            //std::ws is used to to ignore all whitespaces in the string sequence
 
+        LOG("Address")
+        std::getline(std::cin >> std::ws, address);
+
+        LOG("ID")
+        std::getline(std::cin >> std::ws, iD);
+
+        LOG("Client Status")
+        std::getline(std::cin >> std::ws, status);
+
+        std::cout << "Fullname: " << fullName << std::endl;
+
+        LOG("CREATE ANOTHER USER ACCOUNT? (y/n)")
+        std::cin >> choice;
+    }while(choice == 'y' || choice == 'Y');
+    
+    adm.adminInfo();
 }
 
 void delete_User_Account(){
@@ -144,7 +188,7 @@ void update_Teller_List(){
 
     LOG("ENTER EMPLOYEES ID: ")
     std::cin >> iD;
-
+    
     if(currentEmployee == iD){
         LOG("WHAT DO YOU WANT TO CHANGE:\tFullname, ID, Address, Status")
         std::cin >> response;
