@@ -1,7 +1,7 @@
 #include <fstream>
 
 #include "admin.hpp"
-#include "log.hpp"
+#include "macros.hpp"
 
 
 void add_Admin();
@@ -12,8 +12,7 @@ void check_List_Of_Groups();
 void update_Teller_List();
 void update_User_List();
 void menu();
-void textFile();
-
+void add_Money();
 //global variables
 std::string response, currentEmployee, membership, iD;
 
@@ -42,12 +41,12 @@ void admin::adminInfo(){
         LOG("| 2 - Add Bank Teller       |")
         LOG("| 3 - Create User account   |")
         LOG("| 4 - Delete User Account   |")
-        LOG("| 5 - Check List of Users   |")
-        LOG("| 6 - Check List of Tellers |")
-        LOG("| 7 - Update Teller List    |")
+        LOG("| 5 - Check List of Groups  |")
+        LOG("| 6 - Update Teller List    |")
+        LOG("  7 - Add Money             |")
         LOG("| 8 - Update User List      |")
         LOG("| 9 - Return To Menu        |")                   //doesn't work
-        LOG("|10 - Exit                  |")
+        LOG("| 10 - Exit                  |")
         LOG("|---------------------------|\n")
 
         std::cin >> num;
@@ -73,12 +72,15 @@ void admin::adminInfo(){
                 update_Teller_List();
                 break;
             case 7:
-                update_User_List();
+                add_Money();
                 break;
             case 8:
-                menu();
+                update_User_List();
                 break;
             case 9:
+                menu();
+                break;
+            case 10:
                 EXIT_SUCCESS;
                 break;
 
@@ -114,7 +116,7 @@ char choice;
 
         LOG("Membership")
         std::getline(std::cin >> std::ws, membership);
-        
+
     }while(choice == 'y' || choice == 'Y');
     
     adm.adminInfo();
@@ -187,6 +189,29 @@ void update_Teller_List(){
 
 
 }
+
+void add_Money(){
+    int moneyAmount;
+    char choice;
+
+    do{
+        LOG("Enter an amoune you would like to deposit?")
+        std::cin >> moneyAmount;
+        if(moneyAmount < 0){
+            LOG("You didn't add sufficient funds.")
+        }
+
+        LOG("Would you like to deposit again? (y/n)")
+        std::cin >> choice;
+
+    }while(choice == 'y' || choice == 'Y');
+    
+    std::cout << "You entered: " << moneyAmount << std::endl;
+
+    //after entering the money, it should recorded in the user text file.
+    
+}
+
 
 void update_User_List(){
     std::ofstream UserFile;

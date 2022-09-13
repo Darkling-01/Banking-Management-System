@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-#include "log.hpp"
+#include "macros.hpp"
 
 
 class admin{
@@ -37,7 +37,6 @@ class admin{
             std::cin >> choice;
         }
 
-
         void adminInfo();
         void menu();
 
@@ -45,5 +44,6 @@ class admin{
     private:
         std::string username = "admin";
         std::string password = "admin";
+        int moneyAmount;
 
 };
