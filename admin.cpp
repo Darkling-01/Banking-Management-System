@@ -1,22 +1,21 @@
 #include <fstream>
-#include <istream>
-#include "admin.hpp"
 
-#define LOG(x) std::cout << x << std::endl;
+#include "admin.hpp"
+#include "log.hpp"
+
 
 void add_Admin();
 void add_Bank_Teller();
 void create_User_Account();
 void delete_User_Account();
-void check_List_Of_User();
-void check_List_of_Tellers();
+void check_List_Of_Groups();
 void update_Teller_List();
 void update_User_List();
 void menu();
 void textFile();
 
 //global variables
-std::string fullName, address, status, response, currentEmployee, iD;
+std::string response, currentEmployee, membership, iD;
 
 admin adm;
 
@@ -68,21 +67,18 @@ void admin::adminInfo(){
                 delete_User_Account();
                 break;
             case 5:
-                check_List_Of_User();
+                check_List_Of_Groups();
                 break;
             case 6:
-                check_List_of_Tellers();
-                break;
-            case 7:
                 update_Teller_List();
                 break;
-            case 8:
+            case 7:
                 update_User_List();
                 break;
-            case 9:
+            case 8:
                 menu();
                 break;
-            case 10:
+            case 9:
                 EXIT_SUCCESS;
                 break;
 
@@ -101,23 +97,9 @@ void add_Bank_Teller(){
     char choice;
     do{
         LOG(" NEW TELLER INFORMATION")
-        LOG("|----------------------|")
-        LOG("Fullname (first and last)")
-        std::getline(std::cin >> std::ws, fullName);            //std::ws is used to to ignore all whitespaces in the string sequence
+       
+        adm.asking_info();
 
-        LOG("Address")
-        std::getline(std::cin >> std::ws, address);
-
-        LOG("ID")
-        std::getline(std::cin >> std::ws, iD);
-
-        LOG("Teller Status")
-        std::getline(std::cin >> std::ws, status);
-
-        std::cout << "Fullname: " << fullName << std::endl;
-
-        LOG("ADD ANOTHER TELLER? (y/n)")
-        std::cin >> choice;
     }while(choice == 'y' || choice == 'Y');
     
     adm.adminInfo();
@@ -127,23 +109,12 @@ void create_User_Account(){
 char choice;
     do{
         LOG(" Create USER INFORMATION")
-        LOG("|----------------------|")
-        LOG("Fullname (first and last)")
-        std::getline(std::cin >> std::ws, fullName);            //std::ws is used to to ignore all whitespaces in the string sequence
+        
+        adm.asking_info();
 
-        LOG("Address")
-        std::getline(std::cin >> std::ws, address);
-
-        LOG("ID")
-        std::getline(std::cin >> std::ws, iD);
-
-        LOG("Client Status")
-        std::getline(std::cin >> std::ws, status);
-
-        std::cout << "Fullname: " << fullName << std::endl;
-
-        LOG("CREATE ANOTHER USER ACCOUNT? (y/n)")
-        std::cin >> choice;
+        LOG("Membership")
+        std::getline(std::cin >> std::ws, membership);
+        
     }while(choice == 'y' || choice == 'Y');
     
     adm.adminInfo();
@@ -153,7 +124,7 @@ void delete_User_Account(){
 
 }
 
-void check_List_Of_User(){
+void check_List_Of_Groups(){
 
     LOG("  LIST OF GROUPS:  ")
     LOG("|------------------|")
@@ -171,6 +142,7 @@ void check_List_Of_User(){
             break;
         case 2:
             //open text file showing users info
+            
             break;
         case 3:
             adm.adminInfo();
@@ -178,10 +150,6 @@ void check_List_Of_User(){
         default:
             break;
     };
-}
-
-void check_List_of_Tellers(){
-
 }
 
 void update_Teller_List(){
@@ -221,20 +189,18 @@ void update_Teller_List(){
 }
 
 void update_User_List(){
+    std::ofstream UserFile;
+    UserFile.open("UserFile.txt", std::ios::out);
+
+    if(UserFile.fail()){
+        LOG("Error: Can't open file")
+    }
+
+    UserFile.close();
 
 }
 
 
 void admin::menu(){
     //need help to return to main menu in main.cpp
-}
-
-void textFile(){
-    //Create an instance of ofstream and create and opens a new text file called Bank Tellers.
-    std::ofstream teller_file("Bank Tellers.txt", std::ios::in | std::ios::out);
-
-
-    //NOTE: check if the file is already created, if doesn't exist then create one...
-    //NOTE: must to able to modify the file without deleteing the information it already has...
-    
 }
