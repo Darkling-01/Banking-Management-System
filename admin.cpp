@@ -22,6 +22,7 @@ admin adm;
 
 void admin::adminInfo(){
     int num;
+    char s[17] = {0};
 
     std::string user, pass;
     
@@ -29,7 +30,15 @@ void admin::adminInfo(){
     std::cin >> user;
 
     std::cout << "Password: ";
-    std::cin >> pass;
+
+    for(int i = 0; i < 100; i++){
+        s[i] = getchar();
+        putchar('*');
+        if(s[i] == 17) break;
+    };
+    
+    std::cin >> s;
+    getchar();
     
     if(adm.check_Pass(pass) == true && adm.check_User(user) == true){
 
@@ -195,7 +204,7 @@ void add_Money(){
     char choice;
 
     do{
-        LOG("Enter an amoune you would like to deposit?")
+        LOG("Enter an amount you would like to deposit to user?")
         std::cin >> moneyAmount;
         if(moneyAmount < 0){
             LOG("You didn't add sufficient funds.")
